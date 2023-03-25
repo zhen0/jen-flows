@@ -38,7 +38,7 @@ def clean_up_task():
     print("Cleaning up new 🧹")
 
 
-@flow(log_prints=True, name="Some edges", persist_result=True, result_storage=s3_block, result_serializer='json')
+@flow(log_prints=True, name="Some edges", persist_result=True)
 def edges():
     # 1, 2, 3 can run concurrently
     one = task_1.submit()
