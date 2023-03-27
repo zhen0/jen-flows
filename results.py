@@ -16,16 +16,16 @@ def hello_string():
     return 'hello'
 
 @task
-def hello_int():
+def hello_int(persist_result=True):
     print('hello from int task')
     return 8
 
 @task
-def hello_bool():
+def hello_bool(persist_result=True):
     print('hello from bool task')
     return False
 
-@flow(log_prints=True, persist_result=True, result_storage=s3_block, result_serializer='json')
+@flow(log_prints=True, persist_result=True, result_storage=s3_block, result_serializer='json', name="hi_results")
 def hi_results():
     hello_dict()
     hello_string()
