@@ -1,76 +1,79 @@
-from prefect.artifacts import create_table_artifact, create_link_artifact, create_markdown_artifact
-from prefect import task, flow
-import markdown
-
-@task()
-def table_task():
-    highest_churn_possibility = {
-        'customer_id': ['123456789', '987654321', '246810121', '135791113', '864208046'],
-        'name': ['John Smith', 'Jane Doe', 'Bob Johnson', 'Sarah Jones', 'Tom Wilson'],
-        'churn_probability': [0.85, 0.79, 0.67, 0.61, 0.57]
-    }
-    create_table_artifact(
-        key="personalized-reachout",
-        table=highest_churn_possibility,
-        description= "# Marvin, please reach out to these customers today!"
-    )
-
-@task()
-def link_task():
-    artifact_id = create_link_artifact(
-        key="my-important-link-2",
-        link="s3://my-bucket/my-key",
-        link_text="s3-bucket",
-        description="This creates a link to my important bucket.",
-    )
-    return artifact_id
+from prefect import flow, task
+from prefect.artifacts import create_markdown_artifact, create_link_artifact, create_table_artifact
 
 @task
-def my_task():
+def my_first_link_task():
+        create_link_artifact(
+            key="irregular-data",
+            link="https://nyc3.digitaloceanspaces.com/my-bucket-name/highly_variable_data_.csv",
+            description="## Highly variable data",
+            link_text="Highly variable data",
+        )
+
+@task
+def my_second_link_task():
+        create_link_artifact(
+            key="irregular-data",
+            link="https://nyc3.digitaloceanspaces.com/my-bucket-name/low_pred_data_.csv",
+            description="# Low prediction accuracy",
+        )
+@task
+def my_table_task():
+    create_table_artifact(
+        key="sales-data",
+        table=[
+            ["Region", "Revenue"],
+            ["North America", 500000],
+            ["Europe", 250000],
+            ["Asia", 150000],
+            ["South America", 75000],
+            ["Africa", 25000],
+        ],
+        description="## Sales by Region",
+    )
+    
+@task
+def markdown_task():
     na_revenue = 500000
-    markdown_report = f"""
-        # Sales Report
+    markdown_report = f"""# Sales Report
 
-        ## Summary
+## Summary
 
-        In the past quarter, our company saw a significant increase in sales, with a total revenue of $1,000,000. This represents a 20% increase over the same period last year.
+In the past quarter, our company saw a significant increase in sales, with a total revenue of $1,000,000. This represents a 20% increase over the same period last year.
 
-        ## Sales by Region
+## Sales by Region
 
-        | Region        | Revenue |
-        |:--------------|-------:|
-        | North America | 5000 |
-        | Europe        | $250,000 |
-        | Asia          | $150,000 |
-        | South America | $75,000 |
-        | Africa        | $25,000 |
+| Region        | Revenue |
+|:--------------|-------:|
+| North America | ${na_revenue:,} |
+| Europe        | $250,000 |
+| Asia          | $150,000 |
+| South America | $75,000 |
+| Africa        | $25,000 |
 
-        ## Top Products
+## Top Products
 
-        1. Product A - $300,000 in revenue
-        2. Product B - $200,000 in revenue
-        3. Product C - $150,000 in revenue
+1. Product A - $300,000 in revenue
+2. Product B - $200,000 in revenue
+3. Product C - $150,000 in revenue
 
-        ## Conclusion
+## Conclusion
 
-        Overall, these results are very encouraging and demonstrate the success of our sales team in increasing revenue across all regions. However, we still have room for improvement and should focus on further increasing sales in the coming quarter.
-        """
-    return markdown_report
+Overall, these results are very encouraging and demonstrate the success of our sales team in increasing revenue across all regions. However, we still have room for improvement and should focus on further increasing sales in the coming quarter.
+"""
+    create_markdown_artifact(
+        key="gtm-report",
+        markdown=markdown_report,
+        description="Quarterly Sales Report",
+    )
 
 @flow()
 def my_flow():
-    # table_task()
-    # link_task()
-    my_important_report = my_task()
-    # report = markdown_task(),
-    create_markdown_artifact(
-        key="important-markdown-2",
-        markdown=my_important_report,
-        description="Everything you need to know",
-    )
-
+    markdown_task()
+    my_first_link_task()
+    my_second_link_task()
+    my_table_task()
+    
 
 if __name__ == "__main__":
     my_flow()
-
-
