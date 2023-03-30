@@ -5,18 +5,23 @@ gh_block = GitHub.load("jen-gh")
 s3_block = S3.load("jen-s3")
 
 
-@task
+@task(persist_result=False)
+def hello_dict_no_persist():
+    print('hello from dict task')
+    return {'description': "hello"}
+
+@task(persist_result=True)
 def hello_dict():
     print('hello from dict task')
     return {'description': "hello"}
 
-@task
-def hello_string():
-    print('hello from string task')
+@task(persist_result=True, result_storage_key="{parameters[word]}-storage.json")
+def hello_string(word):
+    print('hello from string task', word)
     return 'hello'
 
-@task
-def hello_int(persist_result=True):
+@task(persist_result=True, result_serializer='json', )
+def hello_int():
     print('hello from int task')
     return 8
 
@@ -26,11 +31,12 @@ def hello_bool(persist_result=True):
     return False
 
 @flow(log_prints=True, persist_result=True, result_storage=s3_block, result_serializer='json', name="hi_results")
-def hi_results():
+def hi_results(word:str='default'):
     hello_dict()
-    hello_string()
+    hello_string(word)
     hello_int()
     hello_bool()
     print("Hi from flow")
     return 'hi flow string'
 
+hi_results()
