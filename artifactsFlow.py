@@ -4,7 +4,7 @@ from prefect.artifacts import create_markdown_artifact, create_link_artifact, cr
 @task
 def my_first_link_task():
         create_link_artifact(
-            key="irregular-data",
+            key="variable-data-link",
             link="https://nyc3.digitaloceanspaces.com/my-bucket-name/highly_variable_data_.csv",
             description="## Highly variable data",
             link_text="Highly variable data",
@@ -13,14 +13,14 @@ def my_first_link_task():
 @task
 def my_second_link_task():
         create_link_artifact(
-            key="irregular-data",
+            key="variable-data-link",
             link="https://nyc3.digitaloceanspaces.com/my-bucket-name/low_pred_data_.csv",
             description="# Low prediction accuracy",
         )
 @task
 def my_table_task():
     create_table_artifact(
-        key="sales-data",
+        key="sales-data-table",
         table=[
             ["Region", "Revenue"],
             ["North America", 500000],
@@ -62,7 +62,7 @@ In the past quarter, our company saw a significant increase in sales, with a tot
 Overall, these results are very encouraging and demonstrate the success of our sales team in increasing revenue across all regions. However, we still have room for improvement and should focus on further increasing sales in the coming quarter.
 """
     create_markdown_artifact(
-        key="gtm-report",
+        key="gtm-markdown-report",
         markdown=markdown_report,
         description="Quarterly Sales Report",
     )
