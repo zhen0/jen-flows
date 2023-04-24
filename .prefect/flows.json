@@ -1,6 +1,6 @@
 {
   "hi_flow": "hello.py:hi_flow",
   "hi_results": "results.py:hi_results",
-  "minimal-reproducible-pause-example": "pause.py:minimal_reproducible_pause_example",
-  "param-example": "params.py:param_example"
+  "param-example": "params.py:param_example",
+  "pause-example": "pause.py:pause_example"
 }

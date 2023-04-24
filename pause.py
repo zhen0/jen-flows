@@ -22,7 +22,7 @@ def convert_str_to_int(num: str):
 
 from prefect.engine import pause_flow_run
 @flow()
-def minimal_reproducible_pause_example(num: str):
+def pause_example(num: str):
     x = append_1.submit(num)
     y = append_2.submit(x.result())
     z = append_num.submit(y.result(), "12")
