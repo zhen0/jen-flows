@@ -1,7 +1,7 @@
 # base metadata
 name: null
-version: null
-tags: []
+version: 
+tags: ['jenny']
 description: null
 schedule: null
 
@@ -14,6 +14,8 @@ parameter_openapi_schema: null
 
 # infra-specific fields
 work_pool:
-  name: null
+  name: worker-azure-j
   work_queue_name: null
-  job_variables: {}
+  job_variables: {
+    
+  }

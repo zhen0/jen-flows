@@ -1,8 +1,8 @@
 from prefect import flow, task
 from prefect.filesystems import GitHub, S3
 
-gh_block = GitHub.load("jen-gh")
-s3_block = S3.load("jen-s3")
+# gh_block = GitHub.load("jen-gh")
+# s3_block = S3.load("jen-s3")
 
 
 @task(persist_result=False)
@@ -15,7 +15,7 @@ def hello_dict():
     print('hello from dict task')
     return {'description': "hello"}
 
-@task(persist_result=True, result_storage_key="{parameters[word]}-storage.json")
+@task(persist_result=True, result_storage_key="default-storage.json")
 def hello_string(word):
     print('hello from string task', word)
     return 'hello'
@@ -30,7 +30,8 @@ def hello_bool(persist_result=True):
     print('hello from bool task')
     return False
 
-@flow(log_prints=True, persist_result=True, result_storage=s3_block, result_serializer='json', name="hi_results")
+@flow(log_prints=True, persist_result=True, result_serializer='json', name="hi_results")
+# @flow(log_prints=True, persist_result=True, result_storage=s3_block, result_serializer='json', name="hi_results")
 def hi_results(word:str='default'):
     hello_dict()
     hello_string(word)
@@ -39,4 +40,4 @@ def hi_results(word:str='default'):
     print("Hi from flow")
     return 'hi flow string'
 
-hi_results()
+# hi_results()
