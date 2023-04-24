@@ -14,7 +14,7 @@ parameter_openapi_schema: null
 
 # infra-specific fields
 work_pool:
-  name: worker-azure-j
+  name: 
   work_queue_name: null
   job_variables: {
     
