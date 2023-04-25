@@ -38,7 +38,7 @@ def hi_results(word:str='default'):
     hello_int()
     hello_bool()
     pause_flow_run(timeout=300)
-    print("Hi from flow")
+    print("Hi from paused flow")
     return 'hi flow string'
 
 # hi_results()
