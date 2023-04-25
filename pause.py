@@ -28,7 +28,7 @@ def pause_example(num: str = '5', num2: int = 20):
     z = append_num.submit(y.result(), "12", num2)
     logger = get_run_logger()
     logger.info(f"First result: {convert_str_to_int(x.result())}")
-    # pause_flow_run(timeout=300)
+    pause_flow_run(timeout=300)
     logger.info(f"Second result: {convert_str_to_int(y.result())}")
     logger.info(f"Third result: {convert_str_to_int(z.result())}")
 

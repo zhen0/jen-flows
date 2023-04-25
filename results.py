@@ -30,8 +30,8 @@ def hello_bool(persist_result=True):
     print('hello from bool task')
     return False
 
-# @flow(log_prints=True, persist_result=True, result_serializer='json', name="hi_results")
-@flow(log_prints=True, persist_result=True, result_storage=s3_block, result_serializer='json', name="hi_results")
+@flow(log_prints=True, persist_result=True, result_serializer='json', name="hi_results")
+# @flow(log_prints=True, persist_result=True, result_storage=s3_block, result_serializer='json', name="hi_results")
 def hi_results(word:str='default'):
     hello_dict()
     hello_string(word)
