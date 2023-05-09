@@ -68,7 +68,7 @@ Overall, these results are very encouraging and demonstrate the success of our s
     )
 
 @flow()
-def my_flow():
+def artifacts_flow():
     markdown_task()
     my_first_link_task()
     my_second_link_task()

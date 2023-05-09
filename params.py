@@ -6,6 +6,7 @@ from pydantic import Json
 def param_example(
     param: Json = '[{"a": 1}]'
 ) -> None:
+    print(param)
     pass
 
 # if __name__ == "__main__":

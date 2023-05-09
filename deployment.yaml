@@ -6,10 +6,10 @@ description: null
 schedule: null
 
 # flow-specific fields
-flow_name: null
+flow_name: param-example
 entrypoint: null
 path: null
-parameters: {}
+parameters: {param: '[{"a": 3}]'}
 parameter_openapi_schema: null
 
 # infra-specific fields
@@ -17,5 +17,7 @@ work_pool:
   name: 
   work_queue_name: null
   job_variables: {
-    
+    test: 33,
+    # github: {{ prefect.blocks.github.jen_gh }},
+    aci_credentials: "{{ prefect.blocks.azure-container-instance-credentials.azure-ui }}"
   }
