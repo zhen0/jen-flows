@@ -1,4 +1,5 @@
 {
+  "CopyParamsTest": "copyParams.py:main",
   "CopyPydanticModelUITest": "copyParams.py:main",
   "Pydantic Fields Default": "moreParams.py:mainPydantic",
   "PydanticModelUITest": "paramMRE.py:paramMRE",

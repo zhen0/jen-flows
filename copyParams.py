@@ -9,7 +9,7 @@ class Param(BaseModel):
             )
 
 @flow(
-    name="CopyPydanticModelUITest",
+    name="CopyParamsTest",
     log_prints=True
 )
 def main(
