@@ -3,10 +3,12 @@
   "CopyPydanticModelUITest": "copyParams.py:main",
   "Pydantic Fields Default": "moreParams.py:mainPydantic",
   "PydanticModelUITest": "paramMRE.py:paramMRE",
+  "Testing sub": "subFlow.py:basic_flow",
   "artifacts-flow": "artifactsFlow.py:artifacts_flow",
   "hi_flow": "hello.py:hi_flow",
   "hi_results": "results.py:hi_results",
   "param-example": "params.py:param_example",
   "pause-example": "pause.py:pause_example",
-  "test-flow": "tags.py:test_flow"
+  "test-flow": "tags.py:test_flow",
+  "test-sub": "subFlow.py:basic_flow"
 }

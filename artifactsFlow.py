@@ -75,5 +75,5 @@ def artifacts_flow():
     my_table_task()
     
 
-# if __name__ == "__main__":
-#     my_flow()
+if __name__ == "__main__":
+    artifacts_flow()

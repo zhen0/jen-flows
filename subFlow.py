@@ -41,11 +41,11 @@ def map_flow(rangeInt) -> None:
     
 
 
-@flow(name="Testing sub")
+@flow(name="test-sub")
 def basic_flow(rangeInt:int=28):
     logthis('base')
     basic()
     map_flow(rangeInt)
 
-
-basic_flow(28)
+if __name__ == "main":
+    basic_flow(28)

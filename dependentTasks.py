@@ -49,3 +49,4 @@ def edges():
     clean_up_task.submit(wait_for=[allow_failure(four), allow_failure(five)])
     return 'boo'
 
+edges()
