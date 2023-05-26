@@ -24,7 +24,6 @@ def setup() -> None:
     logger.info("setup start")
     # sleep(1) won't hang
     sleep(8)
-    example1()
     logger.info("setup end")
 
 
@@ -53,6 +52,7 @@ def basic_flow(rangeInt:int=28):
     logthis('base')
     basic()
     map_flow(rangeInt)
+    example1()
 
 if __name__ == "main":
     basic_flow(28)
