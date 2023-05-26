@@ -13,6 +13,7 @@ class Param(BaseModel):
 )
 def paramMRE(
     param: Param,
+    URL: HttpUrl = "http://www.example.com",
     param_with_runtime_defaults: Param = Param(foo=[1], bar={"foo": 1}, car="http://www.example.com", foo_bar="[1]")
 ) -> None:
     pass

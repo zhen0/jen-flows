@@ -1,11 +1,15 @@
 from time import sleep
 from typing import List
 
-from prefect import flow, get_run_logger, task
+from prefect import flow, get_run_logger, task, run_deployment
 
 @flow(name="childFlow")
 def basic():
     logthis("I'm a child")
+
+def example1():
+    response = run_deployment(deployment_id="1190bb25-b08a-41e1-b82b-3ad38e3968cb")
+    print(response)
 
 @task
 def logthis(x):
