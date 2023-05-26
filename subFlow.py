@@ -1,7 +1,8 @@
 from time import sleep
 from typing import List
 
-from prefect import flow, get_run_logger, task, run_deployment
+from prefect import flow, get_run_logger, task
+from prefect.deployments import run_deployment
 
 @flow(name="childFlow")
 def basic():
