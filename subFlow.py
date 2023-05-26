@@ -8,6 +8,7 @@ from prefect.deployments import run_deployment
 def basic():
     logthis("I'm a child")
 
+@flow(name="depFlow")
 def example1():
     response = run_deployment(name="1190bb25-b08a-41e1-b82b-3ad38e3968cb")
     print(response)
