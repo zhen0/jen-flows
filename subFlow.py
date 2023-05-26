@@ -23,6 +23,7 @@ def setup() -> None:
     logger.info("setup start")
     # sleep(1) won't hang
     sleep(8)
+    example1()
     logger.info("setup end")
 
 
